@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>상품 쇼핑몰</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#3b82f6",
+              secondary: "#6b7280",
+            },
+          },
+        },
+      };
+    </script>
+    <script type="text/javascript">
+      (function (l) {
+        if (l.search[1] === "/") {
+          var decoded = l.search
+            .slice(1)
+            .split("&")
+            .map(function (s) {
+              return s.replace(/~and~/g, "&");
+            })
+            .join("?");
+          window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
+        }
+      })(window.location);
+    </script>
+    <script type="module" crossorigin src="/front_6th_chapter1-1/assets/index-CDQ5nw4j.js"></script>
+    <link rel="stylesheet" crossorigin href="/front_6th_chapter1-1/assets/index-DVL8oARQ.css">
+  </head>
+  <body class="bg-gray-50">
+    <div id="root">
+      <!-- JavaScript 로드 전까지 표시될 기본 콘텐츠 (실제 앱 구조와 동일) -->
+      <div class="min-h-screen bg-gray-50">
+        <!-- Header -->
+        <header class="bg-white shadow-sm sticky top-0 z-40">
+          <div class="max-w-md mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+              <h1 class="text-xl font-bold text-gray-900">
+                <a href="/" data-link="">쇼핑몰</a>
+              </h1>
+              <div class="flex items-center space-x-2">
+                <button class="relative p-2 text-gray-700 hover:text-gray-900 transition-colors">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4m2.6 8L6 2H3m4 11v6a1 1 0 001 1h1a1 1 0 001-1v-6M13 13v6a1 1 0 001 1h1a1 1 0 001-1v-6"
+                    ></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-md mx-auto px-4 py-4">
+          <!-- 검색 및 필터 섹션 -->
+          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 mb-4">
+            <!-- 검색 입력 -->
+            <div class="mb-4">
+              <div class="relative">
+                <input
+                  type="text"
+                  placeholder="상품명을 검색해보세요..."
+                  class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  value=""
+                  readonly
+                />
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                  <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    ></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- 카테고리 및 정렬 섹션 -->
+            <div class="space-y-3">
+              <!-- 카테고리 브레드크럼 -->
+              <div class="space-y-2">
+                <div class="flex items-center gap-2">
+                  <label class="text-sm text-gray-600">카테고리:</label>
+                  <button class="text-xs hover:text-blue-800 hover:underline">전체</button>
+                </div>
+              </div>
+
+              <!-- 정렬 및 페이지당 상품 수 -->
+              <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                  <label class="text-sm text-gray-600">개수:</label>
+                  <select class="text-sm border border-gray-300 rounded-md px-2 py-1" disabled>
+                    <option>10개</option>
+                  </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <label class="text-sm text-gray-600">정렬:</label>
+                  <select class="text-sm border border-gray-300 rounded-md px-2 py-1" disabled>
+                    <option>가격 낮은순</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 로딩 상태의 상품 목록 (스켈레톤) -->
+          <div class="mb-4 text-sm text-gray-600">
+            <div class="animate-pulse">
+              <div class="h-4 bg-gray-200 rounded w-32"></div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <!-- 스켈레톤 상품 카드들 -->
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+              <div class="aspect-square bg-gray-200"></div>
+              <div class="p-3">
+                <div class="space-y-2">
+                  <div class="h-4 bg-gray-200 rounded"></div>
+                  <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                  <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="mt-3">
+                  <div class="h-8 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+              <div class="aspect-square bg-gray-200"></div>
+              <div class="p-3">
+                <div class="space-y-2">
+                  <div class="h-4 bg-gray-200 rounded"></div>
+                  <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                  <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="mt-3">
+                  <div class="h-8 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+              <div class="aspect-square bg-gray-200"></div>
+              <div class="p-3">
+                <div class="space-y-2">
+                  <div class="h-4 bg-gray-200 rounded"></div>
+                  <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                  <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="mt-3">
+                  <div class="h-8 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden animate-pulse">
+              <div class="aspect-square bg-gray-200"></div>
+              <div class="p-3">
+                <div class="space-y-2">
+                  <div class="h-4 bg-gray-200 rounded"></div>
+                  <div class="h-3 bg-gray-200 rounded w-2/3"></div>
+                  <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+                <div class="mt-3">
+                  <div class="h-8 bg-gray-200 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-gray-200 mt-12">
+          <div class="max-w-md mx-auto py-8 text-center text-gray-500">
+            <p>© 2025 항해플러스 프론트엔드 쇼핑몰</p>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
